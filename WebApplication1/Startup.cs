@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplication1.Data.DBContext;
 using WebApplication1.Models.DBContext;
 using WebApplication1.Models.Users;
 
@@ -25,20 +26,12 @@ namespace WebApplication1
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(
-            //    Configuration["Data:CPMIdentity:ConnectionString"]));
-
-            //services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
-            //{
-            //    options.User.RequireUniqueEmail = false;
-            //})
-            //.AddEntityFrameworkStores<ApplicationDbContext>()
-            //    .AddDefaultTokenProviders();
-            //services.AddMvc();
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
                 Configuration["Data:CPMIdentity:ConnectionString"]));
+            services.AddDbContext<MyDBContext>(options =>
+            options.UseSqlServer(Configuration["Data:CPMData:ConnectionString"]));
+
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
