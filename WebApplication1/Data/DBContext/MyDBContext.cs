@@ -11,5 +11,6 @@ namespace WebApplication1.Data.DBContext
     {
         public MyDBContext(DbContextOptions<MyDBContext> options) : base(options) { }
         public DbSet<Requests> Requests { get; set; }
+        public DbSet<mytable> mytable { get; set; }
     }
 }
