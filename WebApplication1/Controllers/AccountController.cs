@@ -58,6 +58,10 @@ namespace WebApplication1.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
+        public IActionResult AccountRequest()
+        {
+            return View();
+        }
     }
     
 }
